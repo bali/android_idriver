@@ -10,6 +10,7 @@
 
     <application
         android:allowBackup="true"
+        android:icon="@drawable/ic_idriver"
         android:label="@string/shitsu_dang" >
         <activity android:name=".IDriver" >
             <intent-filter>
