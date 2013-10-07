@@ -5,7 +5,7 @@
 
     <fragment
         android:id="@+id/titlebar"
-        android:name="com.hailo.DaveFragment"
+        android:name="com.hailo.DaveFrag"
         android:layout_width="match_parent"
         android:layout_height="50dp" />
 
