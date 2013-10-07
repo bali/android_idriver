@@ -21,21 +21,24 @@ public class IDriver extends FragmentActivity {
 
         getSupportFragmentManager().beginTransaction().replace(R.id.content, new Driver5(), "TESTING!").commit();
 
-        MixpanelAPI mixpanelAPI = MixpanelAPI.getInstance(this, "e783771cfec7346 012345 0c057875dc7");
+        // TODO: Clean me up later on
+        MixpanelAPI mixpanelAPI = MixpanelAPI.getInstance(this, "e783771cfec73464151f00c057875dc7");
         MixpanelAPI.enableFallbackServer(this, true);
 
-        final String DISTINCT_USER_ID = "driver-NYC1";
+        final String DISTINCT_USER_ID = "e783771cfec73464151f00c057875dc7";
         mixpanelAPI.identify(DISTINCT_USER_ID);
         mixpanelAPI.getPeople().identify(DISTINCT_USER_ID);
         JSONObject properties = new JSONObject();
         try {
-            properties.put("OS Driver ID", DISTINCT_USER_ID);
+            properties.put("$email", "serensky@googlemail.com");
+            properties.put("$first_name", "spam");
+            properties.put("$last_name", "cristizmf@gmail.com");
             mixpanelAPI.track("", properties);
-            properties.put("$email", "harri.smatt@hailocab.com");
             mixpanelAPI.getPeople().set(properties);
         } catch (Exception ex) {
+            ex.printStackTrace();
         }
+
         mixpanelAPI.flush();
     }
-
 }
