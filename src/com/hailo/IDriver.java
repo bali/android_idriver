@@ -22,17 +22,16 @@ public class IDriver extends FragmentActivity {
         getSupportFragmentManager().beginTransaction().replace(R.id.content, new Driver5(), "TESTING!").commit();
 
         MixpanelAPI mixpanelAPI = MixpanelAPI.getInstance(this, "e783771cfec7346 012345 0c057875dc7");
-        // TODO: Pairing failed
-        mixpanelAPI.identify("HarriSmatt");
-        mixpanelAPI.getPeople().identify("HarriSmatt");
+        MixpanelAPI.enableFallbackServer(this, true);
+
+        final String DISTINCT_USER_ID = "driver-NYC1";
+        mixpanelAPI.identify(DISTINCT_USER_ID);
+        mixpanelAPI.getPeople().identify(DISTINCT_USER_ID);
         JSONObject properties = new JSONObject();
         try {
-            properties.put("gender", "male");
-            properties.put("age", 37);
-            mixpanelAPI.track("we miss you jay", properties);
-            properties.put("$email", "harism@gmail.com");
-            properties.put("$first_name", "Harri");
-            properties.put("$last_name", "Smatt");
+            properties.put("OS Driver ID", DISTINCT_USER_ID);
+            mixpanelAPI.track("", properties);
+            properties.put("$email", "harri.smatt@hailocab.com");
             mixpanelAPI.getPeople().set(properties);
         } catch (Exception ex) {
         }
