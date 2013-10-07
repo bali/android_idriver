@@ -1,3 +1,5 @@
+// kopirait
+
 package com.hailo;
 
 import android.app.Activity;
